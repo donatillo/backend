@@ -14,30 +14,32 @@ pipeline {
             }
         }
 
-        /*
         stage('Plan infrastructure') {
-            agent { label 'master' }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'aws', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
                     script {
-                        sh "cd terraform && terraform init -backend-config='access_key=$USER' -backend-config='secret_key=$PASS' && terraform plan -var \"env=${env.BRANCH_NAME}\" -var \"access_key=$USER\" -var \"secret_key=$PASS\" -var \"domain=${env.MY_DOMAIN}\" -out=tfplan"
-                        // timeout(time: 10, unit: 'MINUTES') {
-                        //    input(id: "Deploy Gate", message: "Deploy application?", ok: 'Deploy')
-                        // }
+                        sh """
+                            cd terraform 
+                            terraform init -backend-config='access_key=$USER' -backend-config='secret_key=$PASS' -backend-config='bucket=give-and-take-terraform-${BRANCH_NAME}'
+                            terraform plan -no-color -out=tfplan -var \"env=${env.BRANCH_NAME}\" -var \"access_key=$USER\" -var \"secret_key=$PASS\" -var \"domain=${env.MY_DOMAIN}\"
+                        """
+                        if (env.BRANCH_NAME == "master") {
+                            timeout(time: 10, unit: 'MINUTES') {
+                                input(id: "Deploy Gate", message: "Deploy application?", ok: 'Deploy')
+                            }
+                        }
                     }
                 }
             }
         }
 
         stage('Apply infrastrcuture') {
-            agent { label 'master' }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'aws', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
-                    sh "cd terraform && terraform apply -lock=false -input=false tfplan"
+                    sh "cd terraform && terraform apply -no-color -lock=false -input=false tfplan"
                 }
             }
         }
-        */
 
         stage('Deploy') {
             steps {
