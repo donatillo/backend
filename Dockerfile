@@ -1,8 +1,7 @@
 FROM gradle:jdk8-alpine as builder
-RUN echo 'org.gradle.daemon=false' > ./.gradle/gradle.properties
 ENV GRADLE_OPTS "-Xmx64m"
 COPY backend .
-RUN gradle test bootJar
+RUN gradle --no-daemon test bootJar
 
 FROM openjdk:8-jre-alpine
 RUN mkdir /app
