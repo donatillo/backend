@@ -1,6 +1,7 @@
 FROM gradle:jdk8-alpine as builder
 RUN echo 'org.gradle.daemon=false' > ./.gradle/gradle.properties
 COPY backend .
+RUN gradle test
 RUN gradle bootJar
 
 FROM openjdk:8-jre-alpine
