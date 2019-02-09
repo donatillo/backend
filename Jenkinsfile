@@ -40,7 +40,6 @@ pipeline {
         */
 
         stage('Deploy') {
-            agent { label 'master' }
             steps {
                 sh 'echo Not implemented'
                 //withAWS(region:'us-east-1', credentials:'aws') {
