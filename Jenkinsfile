@@ -1,6 +1,6 @@
 pipeline {
 
-    agent { label = 'master' }
+    agent any
 
     environment {
         CI = true
