@@ -10,6 +10,8 @@ COPY --from=builder /home/gradle/build/libs/backend-*.jar .
 RUN mv backend-*.jar backend.jar
 CMD ["java", "-jar", "backend.jar"]
 
+EXPOSE 8090
+
 # TODO - expose port
 # TODO - install nginx
 # TODO - add https

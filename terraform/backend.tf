@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    key    = "frontend.state"
+    key    = "backend.state"
     region = "us-east-1"
   }
 }
