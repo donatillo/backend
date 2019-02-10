@@ -48,7 +48,7 @@ pipeline {
             steps {
                 // TODO - how will I know the registry name?
                 script {
-                    docker.withRegistry('324139215624.dkr.ecr.us-east-1.amazonaws.com', 'aws') {
+                    docker.withRegistry('https://324139215624.dkr.ecr.us-east-1.amazonaws.com', 'aws') {
                         docker.image('backend').push('latest')
                     }
                 }
