@@ -24,3 +24,4 @@ pending
 Load balancer
 pending
 
+https://docs.aws.amazon.com/pt_br/AmazonECS/latest/developerguide/ECS_AWSCLI_Fargate.html
