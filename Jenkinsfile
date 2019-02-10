@@ -10,7 +10,8 @@ pipeline {
 
         stage('Build container') {
             steps {
-                sh 'docker build -t backend .'
+                // sh 'docker build -t backend .'
+                docker.build('backend')
             }
         }
 
@@ -43,7 +44,10 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'echo Not implemented'
+                // TODO - how will I know the registry name?
+                docker.withRegistry('324139215624.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:aws') {
+                    docker.image('backend').push('latest')
+                }
                 //withAWS(region:'us-east-1', credentials:'aws') {
                 //    s3Upload(file: 'build', bucket: "${env.MY_DOMAIN}-${env.BRANCH_NAME}")
                 //}
