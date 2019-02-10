@@ -1,0 +1,26 @@
+ECS resource creation
+pending
+Cluster
+backend2
+complete
+Task definition
+pending
+Service
+pending
+Additional AWS service integrations
+pending
+Log group
+pending
+CloudFormation stack
+pending
+VPC
+pending
+Subnet 1
+pending
+Subnet 2
+pending
+Security group
+pending
+Load balancer
+pending
+
