@@ -46,7 +46,6 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                // TODO - how will I know the registry name?
                 script {
                     withAWS(region:'us-east-1', credentials:'aws') {
                         def login = ecrLogin()
