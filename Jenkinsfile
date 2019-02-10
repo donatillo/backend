@@ -48,8 +48,8 @@ pipeline {
             steps {
                 // TODO - how will I know the registry name?
                 script {
-                    def login = ecrLogin()
                     withAWS(region:'us-east-1', credentials:'aws') {
+                        def login = ecrLogin()
                         sh """
                             ${login}
                             docker tag backend:latest ${awsIdentity().account}.dkr.ecr.us-east-1.amazonaws.com/${env.BRANCH_NAME}.giveandtake
