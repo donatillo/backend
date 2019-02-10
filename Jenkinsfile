@@ -47,14 +47,14 @@ pipeline {
         stage('Deploy') {
             steps {
                 // TODO - how will I know the registry name?
-                script {
-                    docker.withRegistry('https://324139215624.dkr.ecr.us-east-1.amazonaws.com', 'aws') {
-                        docker.image('backend').push('latest')
-                    }
+                withAWS(region:'us-east-1', credentials:'aws') {
+                    def login = ecrLogin()
+                    sh """
+                        ${login}
+                        docker tag backend:latest ${awsIdentity().account}.dkr.ecr.us-east-1.amazonaws.com/${env.BRANCH_NAME}.giveandtake
+                        docker push ${awsIdentity().account}.dkr.ecr.us-east-1.amazonaws.com/${env.BRANCH_NAME}.giveandtake
+                    """
                 }
-                //withAWS(region:'us-east-1', credentials:'aws') {
-                //    s3Upload(file: 'build', bucket: "${env.MY_DOMAIN}-${env.BRANCH_NAME}")
-                //}
             }
         }
 
