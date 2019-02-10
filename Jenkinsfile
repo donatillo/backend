@@ -45,15 +45,17 @@ pipeline {
         }
 
         stage('Deploy') {
-            def login = ecrLogin()
             steps {
                 // TODO - how will I know the registry name?
-                withAWS(region:'us-east-1', credentials:'aws') {
-                    sh """
-                        ${login}
-                        docker tag backend:latest ${awsIdentity().account}.dkr.ecr.us-east-1.amazonaws.com/${env.BRANCH_NAME}.giveandtake
-                        docker push ${awsIdentity().account}.dkr.ecr.us-east-1.amazonaws.com/${env.BRANCH_NAME}.giveandtake
-                    """
+                script {
+                    def login = ecrLogin()
+                    withAWS(region:'us-east-1', credentials:'aws') {
+                        sh """
+                            ${login}
+                            docker tag backend:latest ${awsIdentity().account}.dkr.ecr.us-east-1.amazonaws.com/${env.BRANCH_NAME}.giveandtake
+                            docker push ${awsIdentity().account}.dkr.ecr.us-east-1.amazonaws.com/${env.BRANCH_NAME}.giveandtake
+                        """
+                    }
                 }
             }
         }
