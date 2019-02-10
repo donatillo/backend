@@ -1,4 +1,4 @@
-resource "aws_ecr_repository" "repository" {
+resource "aws_ecs_cluster" "cluster" {
     name = "${var.appname}-${var.env}"
 }
 

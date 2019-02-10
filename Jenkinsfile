@@ -51,8 +51,8 @@ pipeline {
                         def login = ecrLogin()
                         sh """
                             ${login}
-                            docker tag backend:latest ${awsIdentity().account}.dkr.ecr.us-east-1.amazonaws.com/${env.BRANCH_NAME}.${env.MY_APP}
-                            docker push ${awsIdentity().account}.dkr.ecr.us-east-1.amazonaws.com/${env.BRANCH_NAME}.${env.MY_APP}
+                            docker tag backend:latest ${awsIdentity().account}.dkr.ecr.us-east-1.amazonaws.com/${env.MY_APP}-${env.BRANCH_NAME}
+                            docker push ${awsIdentity().account}.dkr.ecr.us-east-1.amazonaws.com/${env.MY_APP}-${env.BRANCH_NAME}
                         """
                     }
                 }
