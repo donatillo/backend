@@ -10,10 +10,12 @@ pipeline {
 
         stage('Build container') {
             steps {
-                // sh 'docker build -t backend .'
+                sh 'docker build -t backend .'
+                /*
                 script {
                     docker.build('backend')
                 }
+                */
             }
         }
 
