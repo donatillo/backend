@@ -6,7 +6,7 @@ variable "env" {}
 
 variable "domain" {}
 
-variable "appname" {}
+variable "basename" {}
 
 variable "region" {
     default = "us-east-1"

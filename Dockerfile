@@ -1,5 +1,5 @@
 FROM gradle:jdk8-alpine as builder
-ENV GRADLE_OPTS "-Xmx128m"
+ENV GRADLE_OPTS "-Xmx256m"
 COPY backend .
 RUN gradle --no-daemon test bootJar
 
@@ -10,7 +10,7 @@ COPY --from=builder /home/gradle/build/libs/backend-*.jar .
 RUN mv backend-*.jar backend.jar
 CMD ["java", "-jar", "backend.jar"]
 
-EXPOSE 8090
+EXPOSE 8080
 
 # TODO - expose port
 # TODO - install nginx
