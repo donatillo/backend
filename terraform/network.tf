@@ -30,7 +30,7 @@ resource "aws_security_group" "allow_8080" {
     }
 }
 
-resource "aws_security_group" "allow_outbound" {
+resource "aws_security_group" "allow_outbound" {   # this is needed for the service to go to ECR
     name            = "allow_all_outbound"
     description     = "Allow all traffic outbound"
 
