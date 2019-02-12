@@ -11,11 +11,6 @@ pipeline {
         stage('Build container') {
             steps {
                 sh 'docker build -t backend .'
-                /*
-                script {
-                    docker.build('backend')
-                }
-                */
             }
         }
 
@@ -55,6 +50,7 @@ pipeline {
                             ${login}
                             docker tag backend:latest ${awsIdentity().account}.dkr.ecr.us-east-1.amazonaws.com/${env.MY_APP}-${env.BRANCH_NAME}
                             docker push ${awsIdentity().account}.dkr.ecr.us-east-1.amazonaws.com/${env.MY_APP}-${env.BRANCH_NAME}
+                            AWS_ACCESS_KEY_ID=$USER AWS_SECRET_ACCESS_KEY='$PASS' aws ecs update-service --cluster ${env.MY_APP}-${env.BRANCH_NAME} --service backend-service --force-new-deployment
                         """
                     }
                 }

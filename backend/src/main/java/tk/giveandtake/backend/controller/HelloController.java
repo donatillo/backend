@@ -29,10 +29,9 @@ public class HelloController {
             Enumeration<InetAddress> addresses = iface.getInetAddresses();
             while(addresses.hasMoreElements()) {
                 InetAddress addr = addresses.nextElement();
-                ip = addr.getHostAddress();
-                return ip;
+                ip = ip + " " + addr.getHostAddress();
             }
         }
-        return "not found";
+        return ip;
     }
 }
