@@ -14,14 +14,12 @@ resource "aws_ecs_service" "backend" {
         assign_public_ip = true  # TODO
     }
 
-    /*
     tags {
         Name        = "backend-service"
         Creator     = "backend"
         Environment = "${var.env}"
         Description = "Backend service"
     }
-    */
 }
 
 # vim:ts=4:sw=4:sts=4:expandtab:syntax=conf

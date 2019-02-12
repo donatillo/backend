@@ -1,8 +1,9 @@
 - Create service (ok)
-- Resource groups for devl/master
+- Resource groups for devl/master (ok)
 - Autoscaler
 - Add load balancer
 - DNS ?
 - HTTPS for service ?
 - Create API gateway
 - Move service to private subnet, add NAT gateway
+- Only redeploy when there are changes
