@@ -14,7 +14,7 @@ resource "aws_security_group" "allow_8080" {
     name            = "allow_8080"
     description     = "Allow 8080 inbound"
 
-    vpc_id          = "${aws_vpc.main.id}"
+    vpc_id          = "${data.aws_vpc.main.id}"
     
     ingress {
         from_port   = 8080
