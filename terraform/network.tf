@@ -30,5 +30,24 @@ resource "aws_security_group" "allow_8080" {
     }
 }
 
+resource "aws_security_group" "allow_outbound" {
+    name            = "allow_all_outbound"
+    description     = "Allow all traffic outbound"
+
+    vpc_id          = "${data.aws_vpc.main.id}"
+    
+    egress {
+        from_port   = 0
+        to_port     = 0
+        protocol    = "-1"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+
+    tags {
+        Name        = "backend-allow_outbound"
+        Creator     = "backend"
+        Description = "Allow all traffic outbound"
+    }
+}
 
 # vim:ts=4:sw=4:sts=4:expandtab:syntax=conf
