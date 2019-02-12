@@ -7,7 +7,10 @@ resource "aws_ecs_service" "backend" {
 
     network_configuration {
         subnets          = ["${data.aws_subnet.public.id}"]
-        security_groups  = ["${aws_security_group.allow_8080.id}"]
+        security_groups  = [
+            "${aws_security_group.allow_8080.id}",
+            "${aws_security_group.allow_outbound.id}"
+        ]
         assign_public_ip = true  # TODO
     }
 
