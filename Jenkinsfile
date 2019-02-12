@@ -53,7 +53,7 @@ pipeline {
                         """
                     }
                     withCredentials([usernamePassword(credentialsId: 'aws', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
-                        sh "AWS_ACCESS_KEY_ID=$USER AWS_SECRET_ACCESS_KEY='$PASS' aws ecs update-service --cluster ${env.MY_APP}-${env.BRANCH_NAME} --service backend-service --force-new-deployment"
+                        sh "AWS_ACCESS_KEY_ID=$USER AWS_SECRET_ACCESS_KEY='$PASS' aws --region=us-east-1 ecs update-service --cluster ${env.MY_APP}-${env.BRANCH_NAME} --service backend-service --force-new-deployment"
                     }
                 }
             }
