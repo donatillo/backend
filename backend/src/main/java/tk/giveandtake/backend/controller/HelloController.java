@@ -18,7 +18,7 @@ public class HelloController {
 
     @GetMapping(value = "/ip", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     String ip() throws SocketException {
-        String ip;
+        String ip = "";
         Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
         while (interfaces.hasMoreElements()) {
             NetworkInterface iface = interfaces.nextElement();

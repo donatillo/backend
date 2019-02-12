@@ -2,6 +2,7 @@
 - Resource groups for devl/master
 - Autoscaler
 - Add load balancer
+- DNS ?
 - HTTPS for service ?
 - Create API gateway
 - Move service to private subnet, add NAT gateway
