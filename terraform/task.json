@@ -1,14 +1,16 @@
-[
-{
-    "name": "backend-app", 
-    "image": "324139215624.dkr.ecr.us-east-1.amazonaws.com/giveandtake-devl", 
-    "portMappings": [
-	{
-	    "containerPort": 8080, 
-	    "hostPort": 8080, 
-	    "protocol": "tcp"
-	}
-    ], 
-    "essential": true
-}
-] 
+    [
+        {
+            "name": "backend-app", 
+            "image": "324139215624.dkr.ecr.us-east-1.amazonaws.com/giveandtake-devl", 
+            "portMappings": [
+                {
+                    "containerPort": 8080, 
+                    "hostPort": 8080, 
+                    "protocol": "tcp"
+                }
+            ], 
+            "essential": true,
+	    "cpu": "256", 
+	    "memory": "512"
+        }
+    ] 
