@@ -9,8 +9,6 @@
                     "protocol": "tcp"
                 }
             ], 
-            "essential": true,
-	    "cpu": "256", 
-	    "memory": "512"
+            "essential": true
         }
     ] 

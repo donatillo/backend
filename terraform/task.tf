@@ -1,5 +1,9 @@
 resource "aws_ecs_task_definition" "service" {
-    family      = "backend-app"
+    family          = "backend-app"
+    network_mode    = "awsvpc"
+	cpu             = 256 
+	memory          = 512
+    executio_role_arn = arn:aws:iam::324139215624:role/ecsTaskExecutionRole
     container_definitions = "${file("task.json")}"
 
     tags {
