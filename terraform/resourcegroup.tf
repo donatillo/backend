@@ -1,6 +1,6 @@
-resource "aws_resourcegroups_group" "resg-backend-devl" {
-    name = "backend-devl"
-    description = "Resources built for the backend - devl."
+resource "aws_resourcegroups_group" "resg-backend" {
+    name = "backend-${var.env}"
+    description = "Resources built for the backend - ${var.env}."
     
     resource_query {
     query = <<JSON
@@ -13,30 +13,7 @@ resource "aws_resourcegroups_group" "resg-backend-devl" {
     },
     {
       "Key": "Environment",
-      "Values": ["devl"]
-    }
-  ]
-}
-JSON
-  }
-}
-
-resource "aws_resourcegroups_group" "resg-backend-master" {
-    name = "backend-master"
-    description = "Resources built for the backend - master."
-    
-    resource_query {
-    query = <<JSON
-{
-  "ResourceTypeFilters": ["AWS::AllSupported"],
-  "TagFilters": [
-    {
-      "Key": "Creator",
-      "Values": ["backend"]
-    },
-    {
-      "Key": "Environment",
-      "Values": ["master"]
+      "Values": ["${var.env}"]
     }
   ]
 }
