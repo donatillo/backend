@@ -1,6 +1,7 @@
 resource "aws_ecs_task_definition" "service" {
     family          = "backend-app"
     network_mode    = "awsvpc"
+    requires_compatibilities = ["FARGATE"]
 	cpu             = 256 
 	memory          = 512
     execution_role_arn = "arn:aws:iam::324139215624:role/ecsTaskExecutionRole"

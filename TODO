@@ -1,0 +1,5 @@
+- Create service
+- Add load balancer
+- HTTPS for service ?
+- Create API gateway
+- Move service to private subnet, add NAT gateway
