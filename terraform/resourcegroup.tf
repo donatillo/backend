@@ -1,6 +1,6 @@
 resource "aws_resourcegroups_group" "resg-backend-devl" {
     name = "backend-devl"
-    description = "Resources built for the backend (devl)."
+    description = "Resources built for the backend - devl."
     
     resource_query {
     query = <<JSON
@@ -23,7 +23,7 @@ JSON
 
 resource "aws_resourcegroups_group" "resg-backend-master" {
     name = "backend-master"
-    description = "Resources built for the backend (master)."
+    description = "Resources built for the backend - master."
     
     resource_query {
     query = <<JSON
