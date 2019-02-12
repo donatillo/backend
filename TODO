@@ -1,5 +1,6 @@
 - Create service
 - Resource groups for devl/master
+- Autoscaler
 - Add load balancer
 - HTTPS for service ?
 - Create API gateway
