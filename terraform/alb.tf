@@ -1,13 +1,3 @@
-resource "aws_lb_target_group" "backend-target" {
-    name                = "backend-lb-tg"
-    port                = 8080
-    protocol            = "HTTP"
-    target_type         = "ip"
-    vpc_id              = "${data.aws_vpc.main.id}"
-
-    depends_on          = [ "aws_lb.alb" ]
-}
-
 resource "aws_lb" "alb" {
     name                = "backend-alb"
     internal            = false
@@ -30,6 +20,27 @@ resource "aws_lb" "alb" {
         Creator     = "backend"
         Environment = "${var.env}"
         Description = "Backend application load balancer"
+    }
+}
+
+resource "aws_lb_target_group" "backend-target" {
+    name                = "backend-lb-tg"
+    port                = 8080
+    protocol            = "HTTP"
+    target_type         = "ip"
+    vpc_id              = "${data.aws_vpc.main.id}"
+
+    depends_on          = [ "aws_lb.alb" ]
+}
+
+resource "aws_lb_listener" "backend-listener" {
+    load_balancer_arn   = "${aws_lb.alb}"
+    port                = 8080
+    protocol            = "HTTP"
+
+    default_action {
+        target_group_arn = "${aws_lb_target_group.backend-target.arn}"
+        type             = "forward"
     }
 }
 

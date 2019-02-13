@@ -11,7 +11,7 @@ resource "aws_ecs_service" "backend" {
             "${aws_security_group.allow_8080.id}",
             "${aws_security_group.allow_outbound.id}"
         ]
-        assign_public_ip = true  # TODO
+        assign_public_ip = false
     }
 
     load_balancer {
@@ -19,6 +19,8 @@ resource "aws_ecs_service" "backend" {
         container_name   = "backend-app"
         container_port   = 8080
     }
+
+    depends_on = [ "aws_alb_listener.backend-listener" ]
 
     tags {
         Name        = "backend-service"
