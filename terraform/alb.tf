@@ -49,13 +49,6 @@ resource "aws_lb_listener" "backend-listener" {
         target_group_arn = "${aws_lb_target_group.backend-target.arn}"
         type             = "forward"
     }
-
-    tags {
-        Name        = "backend-lb-tg"
-        Creator     = "backend"
-        Environment = "${var.env}"
-        Description = "Target group for the backend"
-    }
 }
 
 # vim:ts=4:sw=4:sts=4:expandtab:syntax=conf
