@@ -31,6 +31,13 @@ resource "aws_lb_target_group" "backend-target" {
     vpc_id              = "${data.aws_vpc.main.id}"
 
     depends_on          = [ "aws_lb.alb" ]
+
+    tags {
+        Name        = "backend-lb-tg"
+        Creator     = "backend"
+        Environment = "${var.env}"
+        Description = "Target group for the backend"
+    }
 }
 
 resource "aws_lb_listener" "backend-listener" {
@@ -41,6 +48,13 @@ resource "aws_lb_listener" "backend-listener" {
     default_action {
         target_group_arn = "${aws_lb_target_group.backend-target.arn}"
         type             = "forward"
+    }
+
+    tags {
+        Name        = "backend-lb-tg"
+        Creator     = "backend"
+        Environment = "${var.env}"
+        Description = "Target group for the backend"
     }
 }
 
