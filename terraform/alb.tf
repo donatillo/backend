@@ -34,7 +34,7 @@ resource "aws_lb_target_group" "backend-target" {
 }
 
 resource "aws_lb_listener" "backend-listener" {
-    load_balancer_arn   = "${aws_lb.alb}"
+    load_balancer_arn   = "${aws_lb.alb.arn}"
     port                = 8080
     protocol            = "HTTP"
 
