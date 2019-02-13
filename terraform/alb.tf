@@ -5,7 +5,7 @@ resource "aws_lb_target_group" "backend-target" {
     target_type         = "ip"
     vpc_id              = "${data.aws_vpc.main.id}"
 
-    depends_on          = [ "aws_alb.alb" ]
+    depends_on          = [ "aws_lb.alb" ]
 }
 
 resource "aws_lb" "alb" {
