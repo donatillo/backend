@@ -1,6 +1,8 @@
 - Create service (ok)
 - Resource groups for devl/master (ok)
-- Add load balancer
+- Add load balancer (ok)
+- Cost reduction
+  - only redeploy when there are changes
 - DNS ?
 - HTTPS for service ?
 - Create API gateway
