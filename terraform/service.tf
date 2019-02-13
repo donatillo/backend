@@ -14,6 +14,12 @@ resource "aws_ecs_service" "backend" {
         assign_public_ip = true  # TODO
     }
 
+    load_balancer {
+        target_group_arn = "${aws_lb_target_group.backend-target.arn}"
+        container_name   = "giveandtake-devl"
+        container_port   = 8080
+    }
+
     tags {
         Name        = "backend-service"
         Creator     = "backend"

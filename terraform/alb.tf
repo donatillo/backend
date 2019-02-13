@@ -1,3 +1,11 @@
+resource "aws_lb_target_group" "backend-target" {
+    name                = "backend-lb-tg"
+    port                = 8080
+    protocol            = "HTTP"
+    target_type         = "ip"
+    vpc_id              = "${data.aws_vpc.main.id}"
+}
+
 resource "aws_lb" "alb" {
     name                = "backend-alb"
     internal            = false
