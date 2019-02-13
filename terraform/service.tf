@@ -6,7 +6,7 @@ resource "aws_ecs_service" "backend" {
     launch_type     = "FARGATE"
 
     network_configuration {
-        subnets          = ["${data.aws_subnet.public.id}"]
+        subnets          = ["${data.aws_subnet.public_a.id}"]
         security_groups  = [
             "${aws_security_group.allow_8080.id}",
             "${aws_security_group.allow_outbound.id}"
