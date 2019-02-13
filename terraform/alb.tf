@@ -40,10 +40,17 @@ resource "aws_lb_target_group" "backend-target" {
     }
 }
 
+data "aws_acm_certificate" "cert" {
+    domain   = "*.${var.domain}"
+    statuses = ["ISSUED"]
+}
+
 resource "aws_lb_listener" "backend-listener" {
     load_balancer_arn   = "${aws_lb.alb.arn}"
-    port                = 8080
-    protocol            = "HTTP"
+    port                = 443
+    protocol            = "HTTPS"
+    ssl_policy          = "ELBSecurityPolicy-2016-08"
+    certificate_arn     = "${data.aws_acm_certificate.cert.arn}"
 
     default_action {
         target_group_arn = "${aws_lb_target_group.backend-target.arn}"

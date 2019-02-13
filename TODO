@@ -1,7 +1,7 @@
 - Create service (ok)
 - Resource groups for devl/master (ok)
 - Add load balancer (ok)
-- DNS ?
+- DNS (ok)
 - HTTPS for service ?
 - Create API gateway
 - Move service to private subnet, add NAT gateway
