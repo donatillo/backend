@@ -11,6 +11,11 @@ import java.util.Enumeration;
 
 @RestController
 public class HelloController {
+    @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    String healthCheck() {
+        return "ok";
+    }
+
     @GetMapping(value = "/hello", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     String hello()  {
         return "world";
