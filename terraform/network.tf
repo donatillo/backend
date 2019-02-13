@@ -4,9 +4,15 @@ data "aws_vpc" "main" {
     }
 }
 
-data "aws_subnet" "public" {
+data "aws_subnet" "public_a" {
     tags {
-        Name = "${var.basename}-subnet-public-${var.env}"
+        Name = "${var.basename}-subnet-public-${var.env}-a"
+    }
+}
+
+data "aws_subnet" "public_b" {
+    tags {
+        Name = "${var.basename}-subnet-public-${var.env}-b"
     }
 }
 

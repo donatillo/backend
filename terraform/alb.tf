@@ -2,7 +2,10 @@ resource "aws_lb" "alb" {
     name                = "backend-alb"
     internal            = false
     load_balancer_type  = "application"
-    subnets             = ["${data.aws_subnet.public.id}"]
+    subnets             = [
+        "${data.aws_subnet.public_a.id}",
+        "${data.aws_subnet.public_b.id}"
+    ]
     security_groups     = [
         "${aws_security_group.allow_8080.id}",
         "${aws_security_group.allow_outbound.id}"
