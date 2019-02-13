@@ -4,6 +4,8 @@ resource "aws_lb_target_group" "backend-target" {
     protocol            = "HTTP"
     target_type         = "ip"
     vpc_id              = "${data.aws_vpc.main.id}"
+
+    depends_on          = [ "aws_alb.alb" ]
 }
 
 resource "aws_lb" "alb" {
