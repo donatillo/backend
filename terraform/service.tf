@@ -6,12 +6,14 @@ resource "aws_ecs_service" "backend" {
     launch_type     = "FARGATE"
 
     network_configuration {
-        subnets          = ["${data.aws_subnet.public_a.id}"]
+        subnets          = [
+            "${data.aws_subnet.public_a.id}",
+            "${data.aws_subnet.public_b.id}"
+        ]
         security_groups  = [
             "${aws_security_group.allow_8080.id}",
             "${aws_security_group.allow_outbound.id}"
         ]
-        assign_public_ip = false
     }
 
     load_balancer {
