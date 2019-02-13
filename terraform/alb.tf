@@ -7,7 +7,7 @@ resource "aws_lb" "alb" {
         "${data.aws_subnet.public_b.id}"
     ]
     security_groups     = [
-        "${aws_security_group.allow_8080.id}",
+        "${aws_security_group.allow_443.id}",
         "${aws_security_group.allow_outbound.id}"
     ]
 

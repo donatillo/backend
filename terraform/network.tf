@@ -16,6 +16,26 @@ data "aws_subnet" "public_b" {
     }
 }
 
+resource "aws_security_group" "allow_443" {
+    name            = "allow_443"
+    description     = "Allow 443 inbound"
+
+    vpc_id          = "${data.aws_vpc.main.id}"
+    
+    ingress {
+        from_port   = 443
+        to_port     = 443
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+
+    tags {
+        Name        = "backend-allow_443"
+        Creator     = "backend"
+        Description = "Allow port 443 inbound"
+    }
+}
+
 resource "aws_security_group" "allow_8080" {
     name            = "allow_8080"
     description     = "Allow 8080 inbound"
