@@ -21,7 +21,7 @@ pipeline {
                         sh """
                             cd terraform 
                             terraform init -backend-config='access_key=$USER' -backend-config='secret_key=$PASS' -backend-config='bucket=${env.MY_APP}-terraform' -backend-config='key=backend-${BRANCH_NAME}.state'
-                            terraform plan -no-color -out=tfplan -var \"env=${env.BRANCH_NAME}\" -var \"access_key=$USER\" -var \"secret_key=$PASS\" -var \"domain=${env.MY_DOMAIN}\" -var \"basename=${env.BASENAME}\"
+                            terraform plan -no-color -out=tfplan -var \"env=${env.BRANCH_NAME}\" -var \"access_key=$USER\" -var \"secret_key=$PASS\" -var \"domain=${env.MY_DOMAIN}\" -var \"basename=${env.BASENAME}\" -var \"subdomain=${BRANCH_NAME == 'master' ? 'api' : 'api-' + BRANCH_NAME}\" 
                         """
                         if (env.BRANCH_NAME == "master") {
                             timeout(time: 10, unit: 'MINUTES') {
