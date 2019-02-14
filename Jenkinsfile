@@ -59,6 +59,8 @@ pipeline {
             }
         }
 
+        // apigateway import-rest-api --body 'file://./swagger.json'
+
     }
 }
 
