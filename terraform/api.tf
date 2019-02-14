@@ -23,6 +23,7 @@ resource "aws_api_gateway_integration" "http_request" {
 
     type        = "HTTP_PROXY"
     uri         = "http://${var.subdomain}.${var.domain}/{proxy}"
+    integration_http_method = "ANY"
 }
 
 # vim:ts=4:sw=4:sts=4:expandtab:syntax=conf
