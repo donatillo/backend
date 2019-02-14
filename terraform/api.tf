@@ -22,7 +22,7 @@ resource "aws_api_gateway_integration" "http_request" {
     http_method = "${aws_api_gateway_method.proxy.http_method}"
 
     type        = "HTTP_PROXY"
-    uri         = "http://${var.subdomain}.${var.domain}/{proxy}"
+    uri         = "http://${var.subdomain}.${var.domain}:8080/{proxy}"
     integration_http_method = "ANY"
 }
 
