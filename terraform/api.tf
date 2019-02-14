@@ -3,6 +3,7 @@ resource "aws_api_gateway_rest_api" "api" {
     description = "Give and Take Application"
 }
 
+/*
 resource "aws_api_gateway_resource" "proxy" {
     rest_api_id = "${aws_api_gateway_rest_api.api.id}"
     parent_id   = "${aws_api_gateway_rest_api.api.root_resource_id}"
@@ -25,5 +26,6 @@ resource "aws_api_gateway_integration" "http_request" {
     uri         = "http://${var.subdomain}.${var.domain}:8080/{proxy}"
     integration_http_method = "ANY"
 }
+*/
 
 # vim:ts=4:sw=4:sts=4:expandtab:syntax=conf
