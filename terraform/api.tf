@@ -1,6 +1,12 @@
 resource "aws_api_gateway_rest_api" "api" {
-    name        = "Give and Take API"
+    name        = "giveandtake-backend"
     description = "Give and Take Application"
+}
+
+resource "aws_api_gateway_resource" "proxy" {
+    rest_api_id = "${aws_api_gateway_rest_api.api.id}"
+    parent_id   = "${aws_api_gateway_rest_api.api.root_resource_id}"
+    path_part   = "{proxy+}"
 }
 
 # vim:ts=4:sw=4:sts=4:expandtab:syntax=conf
