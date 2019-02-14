@@ -22,7 +22,7 @@ resource "aws_api_gateway_integration" "lambda" {
     http_method = "${aws_api_gateway_method.proxy.http_method}"
 
     type        = "HTTP_PROXY"
-    uri         = "http://${var.subdomain}.${domain}/{proxy}"
+    uri         = "http://${var.subdomain}.${var.domain}/{proxy}"
 }
 
 # vim:ts=4:sw=4:sts=4:expandtab:syntax=conf
