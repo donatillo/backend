@@ -2,7 +2,7 @@
 - Resource groups for devl/master (ok)
 - Add load balancer (ok)
 - DNS (ok)
-- HTTPS for service ?
+- HTTPS for service ? - no
 - Create API gateway
 - Move service to private subnet, add NAT gateway
 - Only redeploy when there are changes
