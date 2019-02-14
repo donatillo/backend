@@ -16,7 +16,7 @@ resource "aws_api_gateway_method" "proxy" {
     authorization   = "NONE"
 }
 
-resource "aws_api_gateway_integration" "lambda" {
+resource "aws_api_gateway_integration" "http_request" {
     rest_api_id = "${aws_api_gateway_rest_api.api.id}"
     resource_id = "${aws_api_gateway_method.proxy.resource_id}"
     http_method = "${aws_api_gateway_method.proxy.http_method}"
