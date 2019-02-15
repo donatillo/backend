@@ -1,10 +1,10 @@
+/*
 resource "aws_api_gateway_rest_api" "api" {
     name        = "giveandtake-backend"
     description = "Give and Take Application"
     body        = "${file("../api.yaml")}"
 }
 
-/*
 resource "aws_api_gateway_resource" "proxy" {
     rest_api_id = "${aws_api_gateway_rest_api.api.id}"
     parent_id   = "${aws_api_gateway_rest_api.api.root_resource_id}"
