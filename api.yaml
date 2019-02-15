@@ -16,7 +16,6 @@ paths:
           content:
             application/json:
               schema: 
-                type: string
                 example: ok
   /ip:
     get:
@@ -26,11 +25,14 @@ paths:
           content:
             application/json:
               schema: 
-                type: string
                 example: '192.168.0.1'
       x-amazon-apigateway-integration:
         type: http
+        httpMethod: GET
         uri: http://api-devl.give-and-take.tk:8080/ip
+        responses: 
+          default:
+            statusCode: '200'
   /hello:
     get:
       responses:
@@ -39,5 +41,4 @@ paths:
           content:
             application/json:
               schema: 
-                type: string
                 example: world
