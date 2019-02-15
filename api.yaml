@@ -14,14 +14,18 @@ paths:
         '200':
           description: 'Verification ok'
           content:
-            application/json: nil
+            application/json:
+              schema: 
+                example: ok
   /ip:
     get:
       responses:
         '200':
           description: 'Return machine local ip'
           content:
-            application/json: nil
+            application/json:
+              schema: 
+                example: '192.168.0.1'
       x-amazon-apigateway-integration:
         type: http
         httpMethod: GET
@@ -35,4 +39,6 @@ paths:
         '200':
           description: 'Hello world'
           content:
-            application/json: nil
+            application/json:
+              schema: 
+                example: world
