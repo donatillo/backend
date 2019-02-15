@@ -41,7 +41,7 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Deploy container') {
             steps {
                 script {
                     withAWS(region:'us-east-1', credentials:'aws') {
@@ -54,6 +54,16 @@ pipeline {
                     }
                     withCredentials([usernamePassword(credentialsId: 'aws', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
                         sh "AWS_ACCESS_KEY_ID=$USER AWS_SECRET_ACCESS_KEY='$PASS' aws --region=us-east-1 ecs update-service --cluster ${env.MY_APP}-${env.BRANCH_NAME} --service backend-service --force-new-deployment"
+                    }
+                }
+            }
+        }
+
+        stage('Deploy API') {
+            steps {
+                script {
+                    withCredentials([usernamePassword(credentialsId: 'aws', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
+                        sh "AWS_ACCESS_KEY_ID=$USER AWS_SECRET_ACCESS_KEY='$PASS' aws --region=us-east-1 apigateway import-rest-api --body 'file://./api.yaml'"
                     }
                 }
             }
