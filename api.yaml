@@ -1,0 +1,40 @@
+openapi: 3.0.0
+info:
+  version: '1.0'
+  title: 'giveandtake-backend'
+
+servers:
+  - url: http://api-devl.give-and-take.tk:8080/
+    description: 'Server in development environment'
+  
+paths:
+  /:
+    get:
+      responses:
+        '200':
+          description: 'Verification ok'
+          content:
+            application/json:
+              schema: 
+                type: string
+                example: ok
+  /ip:
+    get:
+      responses:
+        '200':
+          description: 'Return machine local ip'
+          content:
+            application/json:
+              schema: 
+                type: string
+                example: '192.168.0.1'
+  /hello:
+    get:
+      responses:
+        '200':
+          description: 'Hello world'
+          content:
+            application/json:
+              schema: 
+                type: string
+                example: world
