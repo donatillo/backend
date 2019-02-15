@@ -1,44 +1,23 @@
-openapi: 3.0.0
+swagger: '2.0'
 info:
   version: '1.0'
   title: 'giveandtake-backend'
-
-servers:
-  - url: http://api-devl.give-and-take.tk:8080/
-    description: 'Server in development environment'
-  
+  description: 'Give & Take - Backend'
+host: 'api-devl.give-and-take.tk:8080'
+schemes: 
+  - 'http'
 paths:
   /:
     get:
+      summary: 'Health check'
+      description: 'Test health'
       responses:
-        '200':
-          description: 'Verification ok'
-          content:
-            application/json:
-              schema: 
-                example: ok
-  /ip:
-    get:
-      responses:
-        '200':
-          description: 'Return machine local ip'
-          content:
-            application/json:
-              schema: 
-                example: '192.168.0.1'
+        200:
+          description: OK
       x-amazon-apigateway-integration:
         type: http
         httpMethod: GET
         uri: http://api-devl.give-and-take.tk:8080/ip
-        responses: 
+        responses:
           default:
             statusCode: '200'
-  /hello:
-    get:
-      responses:
-        '200':
-          description: 'Hello world'
-          content:
-            application/json:
-              schema: 
-                example: world
