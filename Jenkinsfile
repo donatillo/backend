@@ -59,6 +59,7 @@ pipeline {
             }
         }
 
+	/*
         stage('Deploy API') {
             steps {
                 script {
@@ -68,6 +69,7 @@ pipeline {
                 }
             }
         }
+	*/
 
         // apigateway import-rest-api --body 'file://./swagger.json'
 
