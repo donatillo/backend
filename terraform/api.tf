@@ -21,6 +21,7 @@ resource "aws_api_gateway_domain_name" "api_domain" {
 }
 
 # API base mapping
+/*
 resource "aws_api_gateway_base_path_mapping" "mapping" {
 	api_id      = "${aws_api_gateway_rest_api.api.id}"
 	stage_name  = "${aws_api_gateway_deployment.api_deploy.stage_name}"
@@ -33,7 +34,6 @@ resource "aws_api_gateway_client_certificate" "client_certificate" {
 }
 
 # API deployment
-/*
 resource "aws_api_gateway_deployment" "api_deploy" {
     depends_on = [ "aws_api_gateway_rest_api.api" ]
 
