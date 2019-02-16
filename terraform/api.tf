@@ -35,4 +35,9 @@ resource "aws_api_gateway_base_path_mapping" "mapping" {
 	domain_name = "${aws_api_gateway_domain_name.api_domain.domain_name}"
 }
 
+# client certificate
+resource "aws_api_gateway_client_certificate" "client_certificate" {
+	description = "Certificate for backend running at ${var.subdomain}.${var.domain}"
+}
+
 # vim:ts=4:sw=4:sts=4:expandtab:syntax=conf

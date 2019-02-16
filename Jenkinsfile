@@ -59,20 +59,6 @@ pipeline {
             }
         }
 
-	/*
-        stage('Deploy API') {
-            steps {
-                script {
-                    withCredentials([usernamePassword(credentialsId: 'aws', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
-                        sh "AWS_ACCESS_KEY_ID=$USER AWS_SECRET_ACCESS_KEY='$PASS' aws --region=us-east-1 apigateway put-rest-api --body 'file://./api.yaml' --fail-on-warnings"
-                    }
-                }
-            }
-        }
-	*/
-
-        // apigateway import-rest-api --body 'file://./swagger.json'
-
     }
 }
 

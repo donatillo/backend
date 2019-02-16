@@ -7,14 +7,13 @@
   - improve python app (ok)
   - create internal domain
     - adjust env in YAML, api.tf (ok)
-    - limit service calls between API Gateway and service
-  - publish documentation
-  - use internal domain for container
-  - fix swagger file
-  - add tags to API in terraform
-  - create custom domain name
+  - create custom domain name (ok)
+  - use internal domain for container (ok)
+  - fix swagger file (ok)
   - create client certificate to backend
+  - publish documentation
   - move API to private subnet, add NAT gateway (?)
+    - limit service calls between API Gateway and service
 - Log EVERYTHING
 - Only redeploy when there are changes
 - Autoscaler (create alarm)
