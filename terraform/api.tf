@@ -33,6 +33,7 @@ resource "aws_api_gateway_client_certificate" "client_certificate" {
 }
 
 # API deployment
+/*
 resource "aws_api_gateway_deployment" "api_deploy" {
     depends_on = [ "aws_api_gateway_rest_api.api" ]
 
@@ -46,6 +47,6 @@ resource "aws_api_gateway_stage" "test" {
     deployment_id         = "${aws_api_gateway_deployment.api_deploy.id}"
 	client_certificate_id = "${aws_api_gateway_client_certificate.client_certificate.id}"
 }
-
+*/
 
 # vim:ts=4:sw=4:sts=4:expandtab:syntax=conf
