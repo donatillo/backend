@@ -5,8 +5,10 @@
 - Create API gateway
   - create python repo (ok)
   - improve python app (ok)
-  - publish documentation
   - create internal domain
+    - adjust env in YAML, api.tf
+    - limit service calls between API Gateway and service
+  - publish documentation
   - use internal domain for container
   - fix swagger file
   - add tags to API in terraform
