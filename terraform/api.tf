@@ -2,7 +2,7 @@
 data "template_file" "yaml" {
     template    = "${file("../api.yaml")}"
     vars {
-        domain  = "internalapi-${var.env}.${var.domain}"
+        domain  = "privateapi-${var.env}.${var.domain}"
 		port    = 5000
     }
 }

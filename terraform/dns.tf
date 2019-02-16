@@ -4,11 +4,11 @@ data "aws_route53_zone" "primary" {
 }
 
 #
-# internal API
+# private API
 #
-resource "aws_route53_record" "ipv4" {
+resource "aws_route53_record" "private-ipv4" {
     zone_id         = "${data.aws_route53_zone.primary.zone_id}"
-    name            = "internalapi-${var.env}.${var.domain}"
+    name            = "privateapi-${var.env}.${var.domain}"
     type            = "A"
     alias {
         name        = "${aws_lb.alb.dns_name}"
@@ -17,9 +17,9 @@ resource "aws_route53_record" "ipv4" {
     }
 }
 
-resource "aws_route53_record" "ipv6" {
+resource "aws_route53_record" "private-ipv6" {
     zone_id         = "${data.aws_route53_zone.primary.zone_id}"
-    name            = "internalapi-${var.env}.${var.domain}"
+    name            = "privateapi-${var.env}.${var.domain}"
     type            = "AAAA"
     alias {
         name        = "${aws_lb.alb.dns_name}"
@@ -32,7 +32,7 @@ resource "aws_route53_record" "ipv6" {
 # external API
 #
 
-resource "aws_route53_record" "ipv4" {
+resource "aws_route53_record" "public-ipv4" {
     zone_id         = "${data.aws_route53_zone.primary.zone_id}"
     name            = "${var.subdomain}.${var.domain}"
     type            = "A"
@@ -42,7 +42,7 @@ resource "aws_route53_record" "ipv4" {
     }
 }
 
-resource "aws_route53_record" "ipv6" {
+resource "aws_route53_record" "public-ipv6" {
     zone_id         = "${data.aws_route53_zone.primary.zone_id}"
     name            = "${var.subdomain}.${var.domain}"
     type            = "AAAA"
