@@ -23,10 +23,6 @@ resource "aws_api_gateway_deployment" "api_deploy" {
 }
 
 # API custom domain name
-data "aws_acm_certificate" "cert" {
-    domain   = "*.${var.domain}"
-    statuses = ["ISSUED"]
-}
 
 resource "aws_api_gateway_domain_name" "api_domain" {
 	certificate_arn     = "${data.aws_acm_certificate.cert.arn}"
