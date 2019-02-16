@@ -1,5 +1,5 @@
 data "template_file" "yaml" {
-    template    = "${file("api.yaml")}"
+    template    = "${file("../api.yaml")}"
     vars {
         url = "internal-${var.env}.${var.domain}"
 		port = 5000
