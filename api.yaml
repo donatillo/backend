@@ -17,7 +17,7 @@ paths:
       x-amazon-apigateway-integration:
         type: http
         httpMethod: GET
-        uri: ${url}:${port}/
+        uri: http://${domain}:${port}/
         responses:
           default:
             statusCode: '200'
@@ -31,7 +31,7 @@ paths:
       x-amazon-apigateway-integration:
         type: http
         httpMethod: GET
-        uri: ${url}:${port}/ip
+        uri: http://${domain}:${port}/ip
         responses:
           default:
             statusCode: '200'
