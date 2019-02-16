@@ -2,8 +2,11 @@
 - Resource groups for devl/master (ok)
 - Add load balancer (ok)
 - DNS (ok)
-- HTTPS for service ? - no
 - Create API gateway
-- Move service to private subnet, add NAT gateway
+  - create python repo
+  - fix swagger file
+  - add tags to API in terraform
+  - create custom domain name
+  - move API to private subnet, add NAT gateway (?)
 - Only redeploy when there are changes
 - Autoscaler (create alarm)
