@@ -8,7 +8,7 @@ api = Api(app)
 class HelloWorld(Resource):
     def get(self):
         #return { 'hello': 'world' }
-        return dict(request)
+        return dict(request.headers)
 
 api.add_resource(HelloWorld, '/')
 
