@@ -1,17 +1,16 @@
-FROM gradle:jdk8-alpine as builder
-ENV GRADLE_OPTS "-Xmx256m"
+FROM python:3-alpine
+
+RUN pip install flask
+
+WORKDIR /usr/src/app
+
 COPY backend .
-RUN gradle --no-daemon test bootJar
 
-FROM openjdk:8-jre-alpine
-RUN mkdir /app
-WORKDIR /app
-COPY --from=builder /home/gradle/build/libs/backend-*.jar .
-RUN mv backend-*.jar backend.jar
-CMD ["java", "-jar", "backend.jar"]
+ENV FLASK_APP=hello.py
 
-EXPOSE 8080
+CMD ["flask", "run", "--host=0.0.0.0"]
 
-# TODO - expose port
+EXPOSE 5000
+
 # TODO - install nginx
 # TODO - add https
