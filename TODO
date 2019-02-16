@@ -4,7 +4,8 @@
 - DNS (ok)
 - Create API gateway
   - create python repo (ok)
-  - improve python app
+  - improve python app (ok)
+  - publish documentation
   - create internal domain
   - use internal domain for container
   - fix swagger file
