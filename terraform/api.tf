@@ -1,7 +1,15 @@
+data "template_file" "yaml" {
+    template    = "${file("api.yaml")}"
+    vars {
+        url = "internal-${var.env}.${var.domain}"
+		port = 5000
+    }
+}
+
 resource "aws_api_gateway_rest_api" "api" {
-    name        = "giveandtake-backend"
+    name        = "giveandtake-backend-${var.env}"
     description = "Give and Take Application"
-    body        = "${file("../api.yaml")}"
+    body        = "${data.template_file.yaml.rendered}"
 
     # TODO - add tags
 }
