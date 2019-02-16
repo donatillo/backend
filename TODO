@@ -6,7 +6,7 @@
   - create python repo (ok)
   - improve python app (ok)
   - create internal domain
-    - adjust env in YAML, api.tf
+    - adjust env in YAML, api.tf (ok)
     - limit service calls between API Gateway and service
   - publish documentation
   - use internal domain for container
