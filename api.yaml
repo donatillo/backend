@@ -17,7 +17,7 @@ paths:
       x-amazon-apigateway-integration:
         type: http
         httpMethod: GET
-        uri: http://internalapi-${stageVariables.env}.give-and-take.tk:5000/
+        uri: http://${stageVariables.env}.give-and-take.tk:5000/
         responses:
           default:
             statusCode: '200'
@@ -31,7 +31,7 @@ paths:
       x-amazon-apigateway-integration:
         type: http
         httpMethod: GET
-        uri: http://internalapi-${stageVariables.env}.give-and-take.tk:5000/ip
+        uri: http://${stageVariables.env}.give-and-take.tk:5000/ip
         responses:
           default:
             statusCode: '200'
