@@ -7,6 +7,8 @@
   - fix swagger file
   - add tags to API in terraform
   - create custom domain name
+  - create client certificate to backend
   - move API to private subnet, add NAT gateway (?)
+- Log EVERYTHING
 - Only redeploy when there are changes
 - Autoscaler (create alarm)
