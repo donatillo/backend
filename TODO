@@ -3,7 +3,8 @@
 - Add load balancer (ok)
 - DNS (ok)
 - Create API gateway
-  - create python repo
+  - create python repo (ok)
+  - add basic logs to service
   - fix swagger file
   - add tags to API in terraform
   - create custom domain name
