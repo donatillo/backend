@@ -16,23 +16,23 @@ data "aws_subnet" "public_b" {
     }
 }
 
-resource "aws_security_group" "allow_5000" {
-    name            = "allow_5000"
-    description     = "Allow 5000 inbound"
+resource "aws_security_group" "allow_80" {
+    name            = "allow_80"
+    description     = "Allow 80 inbound"
 
     vpc_id          = "${data.aws_vpc.main.id}"
     
     ingress {
-        from_port   = 5000
-        to_port     = 5000
+        from_port   = 80
+        to_port     = 80
         protocol    = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }
 
     tags {
-        Name        = "backend-allow_5000"
+        Name        = "backend-allow_80"
         Creator     = "backend"
-        Description = "Allow port 5000 inbound"
+        Description = "Allow port 80 inbound"
     }
 }
 

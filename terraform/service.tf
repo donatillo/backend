@@ -11,7 +11,7 @@ resource "aws_ecs_service" "backend" {
             "${data.aws_subnet.public_b.id}"
         ]
         security_groups  = [
-            "${aws_security_group.allow_5000.id}",
+            "${aws_security_group.allow_80.id}",
             "${aws_security_group.allow_outbound.id}"
         ]
         assign_public_ip = true
@@ -20,7 +20,7 @@ resource "aws_ecs_service" "backend" {
     load_balancer {
         target_group_arn = "${aws_lb_target_group.backend-target.arn}"
         container_name   = "backend-app"
-        container_port   = 5000
+        container_port   = 80
     }
 
     depends_on = [ "aws_lb_listener.backend-listener" ]

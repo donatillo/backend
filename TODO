@@ -11,9 +11,14 @@
   - use internal domain for container (ok)
   - fix swagger file (ok)
   - create client certificate to backend
+    - install uswgi
+    - install nginx
+    - configure https on nginx
+    - configure client certificate on nginx
   - publish documentation
   - move API to private subnet, add NAT gateway (?)
     - limit service calls between API Gateway and service
 - Log EVERYTHING
 - Only redeploy when there are changes
 - Autoscaler (create alarm)
+- virtualenv python
