@@ -23,10 +23,16 @@ resource "aws_api_gateway_deployment" "api_deploy" {
 }
 
 # API custom domain name
-
 resource "aws_api_gateway_domain_name" "api_domain" {
 	certificate_arn     = "${data.aws_acm_certificate.cert.arn}"
 	domain_name         = "${var.subdomain}.${var.domain}"
+}
+
+# API base mapping
+resource "aws_api_gateway_base_path_mapping" "mapping" {
+	api_id      = "${aws_api_gateway_rest_api.api.id}"
+	stage_name  = "${aws_api_gateway_deployment.api_deploy.stage_name}"
+	domain_name = "${aws_api_gateway_domain_name.api_domain.domain_name}"
 }
 
 # vim:ts=4:sw=4:sts=4:expandtab:syntax=conf
