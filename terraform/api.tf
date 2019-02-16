@@ -21,7 +21,6 @@ resource "aws_api_gateway_domain_name" "api_domain" {
 }
 
 # API base mapping
-/*
 resource "aws_api_gateway_base_path_mapping" "mapping" {
 	api_id      = "${aws_api_gateway_rest_api.api.id}"
 	stage_name  = "${aws_api_gateway_deployment.api_deploy.stage_name}"
@@ -47,6 +46,5 @@ resource "aws_api_gateway_stage" "test" {
     deployment_id         = "${aws_api_gateway_deployment.api_deploy.id}"
 	client_certificate_id = "${aws_api_gateway_client_certificate.client_certificate.id}"
 }
-*/
 
 # vim:ts=4:sw=4:sts=4:expandtab:syntax=conf
