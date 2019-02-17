@@ -21,6 +21,20 @@ paths:
         responses:
           default:
             statusCode: '200'
+  /version:
+    get:
+      summary: 'Check version'
+      description: 'Check version'
+      responses:
+        200:
+          description: OK
+      x-amazon-apigateway-integration:
+        type: http
+        httpMethod: GET
+        uri: http://${domain}:${port}/version
+        responses:
+          default:
+            statusCode: '200'
   /ip:
     get:
       summary: 'IP'

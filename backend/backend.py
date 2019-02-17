@@ -12,6 +12,13 @@ class HelloWorld(Resource):
 
 api.add_resource(HelloWorld, '/')
 
+class Version(Resource):
+    def get(self):
+        #return { 'hello': 'world' }
+        return '0.1'
+
+api.add_resource(Version, '/version')
+
 class IP(Resource):
     def get(self):
         ips = []
