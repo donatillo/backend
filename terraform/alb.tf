@@ -46,7 +46,7 @@ data "aws_acm_certificate" "cert" {
     statuses = ["ISSUED"]
 }
 
-resource "aws_lb_listener" "backend-listener" {
+resource "aws_lb_listener" "backend-listener-80" {
     load_balancer_arn   = "${aws_lb.alb.arn}"
     port                = 80
     protocol            = "HTTP"
@@ -57,7 +57,7 @@ resource "aws_lb_listener" "backend-listener" {
     }
 }
 
-resource "aws_lb_listener" "backend-listener" {
+resource "aws_lb_listener" "backend-listener-443" {
     load_balancer_arn   = "${aws_lb.alb.arn}"
     port                = 443
     protocol            = "HTTPS"
