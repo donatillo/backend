@@ -3,7 +3,7 @@ info:
   version: '1.0'
   title: 'giveandtake-backend-${env}'
   description: 'Give & Take - Backend'
-host: 'api-devl.give-and-take.tk:5000'
+host: 'internalapi-devl.give-and-take.tk'
 schemes: 
   - 'http'
 paths:

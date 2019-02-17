@@ -11,8 +11,8 @@
   - use internal domain for container (ok)
   - fix swagger file (ok)
   - create client certificate to backend
-    - install uswgi
-    - install nginx
+    - install uswgi (ok)
+    - install nginx (ok)
     - configure https on nginx
     - configure client certificate on nginx
   - publish documentation
