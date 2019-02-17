@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   version: '1.0'
-  title: 'giveandtake-backend'
+  title: 'giveandtake-backend-${env}'
   description: 'Give & Take - Backend'
 host: 'api-devl.give-and-take.tk:5000'
 schemes: 

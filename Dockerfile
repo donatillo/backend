@@ -11,10 +11,14 @@ WORKDIR /usr/src/app
 
 COPY backend .
 COPY etc/default.conf /etc/nginx/conf.d/
+COPY etc/selfsigned.crt /etc/
+COPY etc/selfsigned.key /etc/
+COPY etc/dhparam.pem /etc/
 
 CMD ./start.sh
 
 EXPOSE 80
+EXPOSE 443
 
 # TODO - install nginx
 # TODO - add https
