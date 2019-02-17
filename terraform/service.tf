@@ -21,7 +21,7 @@ resource "aws_ecs_service" "backend" {
     load_balancer {
         target_group_arn = "${aws_lb_target_group.backend-target.arn}"
         container_name   = "backend-app"
-        container_port   = 80
+        container_port   = 443
     }
 
     depends_on = [ "aws_lb_listener.backend-listener" ]

@@ -26,8 +26,8 @@ resource "aws_lb" "alb" {
 
 resource "aws_lb_target_group" "backend-target" {
     name                = "backend-lb-tg"
-    port                = 80
-    protocol            = "HTTP"
+    port                = 443
+    protocol            = "HTTPS"
     target_type         = "ip"
     vpc_id              = "${data.aws_vpc.main.id}"
 
@@ -48,8 +48,8 @@ data "aws_acm_certificate" "cert" {
 
 resource "aws_lb_listener" "backend-listener" {
     load_balancer_arn   = "${aws_lb.alb.arn}"
-    port                = 80
-    protocol            = "HTTP"
+    port                = 443
+    protocol            = "HTTPS"
 
     default_action {
         target_group_arn = "${aws_lb_target_group.backend-target.arn}"
