@@ -1,7 +1,7 @@
 [
     {
-        "name": "backend-app", 
-        "image": "324139215624.dkr.ecr.us-east-1.amazonaws.com/giveandtake-devl:latest", 
+        "name": "backend-app-${env}", 
+        "image": "324139215624.dkr.ecr.us-east-1.amazonaws.com/giveandtake-${env}:latest", 
         "portMappings": [
             {
                 "containerPort": 443, 
@@ -12,7 +12,7 @@
         "logConfiguration": {
             "logDriver": "awslogs",
             "options": {
-                "awslogs-group": "backend-logs-devl",
+                "awslogs-group": "backend-logs-${env}",
                 "awslogs-region": "us-east-1",
                 "awslogs-stream-prefix": "backend"
             }

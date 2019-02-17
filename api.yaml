@@ -3,7 +3,7 @@ info:
   version: '1.0'
   title: 'giveandtake-backend-${env}'
   description: 'Give & Take - Backend'
-host: 'internalapi-devl.give-and-take.tk'
+host: '${domain}'
 schemes: 
   - 'http'
 paths:
@@ -17,7 +17,7 @@ paths:
       x-amazon-apigateway-integration:
         type: http
         httpMethod: GET
-        uri: http://${domain}:${port}/
+        uri: https://${domain}/
         responses:
           default:
             statusCode: '200'
@@ -31,7 +31,7 @@ paths:
       x-amazon-apigateway-integration:
         type: http
         httpMethod: GET
-        uri: http://${domain}:${port}/version
+        uri: https://${domain}/version
         responses:
           default:
             statusCode: '200'
@@ -45,7 +45,7 @@ paths:
       x-amazon-apigateway-integration:
         type: http
         httpMethod: GET
-        uri: http://${domain}:${port}/ip
+        uri: https://${domain}/ip
         responses:
           default:
             statusCode: '200'

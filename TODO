@@ -14,9 +14,9 @@
     - install uswgi (ok)
     - install nginx (ok)
     - configure https on nginx - self-signed (ok)
-    - "devl" in task definition
-    - add Cloudwatch logs
-    - configure volume
+    - add Cloudwatch logs (ok)
+    - "devl" in task definition 
+    - create DynamoDB table
     - integrate with Let's Encrypt
     - configure client certificate on nginx
   - publish documentation
