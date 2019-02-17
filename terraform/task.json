@@ -9,6 +9,14 @@
                 "protocol": "tcp"
             }
         ], 
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+                "awslogs-group": "backend-logs-devl",
+                "awslogs-region": "us-east-1",
+                "awslogs-stream-prefix": "backend"
+            }
+        },
         "essential": true
     }
 ] 

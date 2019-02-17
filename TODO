@@ -13,7 +13,11 @@
   - create client certificate to backend
     - install uswgi (ok)
     - install nginx (ok)
-    - configure https on nginx
+    - configure https on nginx - self-signed (ok)
+    - "devl" in task definition
+    - add Cloudwatch logs
+    - configure volume
+    - integrate with Let's Encrypt
     - configure client certificate on nginx
   - publish documentation
   - move API to private subnet, add NAT gateway (?)
