@@ -12,6 +12,7 @@ resource "aws_ecs_service" "backend" {
         ]
         security_groups  = [
             "${aws_security_group.allow_80.id}",
+            "${aws_security_group.allow_443.id}",
             "${aws_security_group.allow_outbound.id}"
         ]
         assign_public_ip = true

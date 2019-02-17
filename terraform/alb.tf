@@ -8,6 +8,7 @@ resource "aws_lb" "alb" {
     ]
     security_groups     = [
         "${aws_security_group.allow_80.id}",
+        "${aws_security_group.allow_443.id}",
         "${aws_security_group.allow_outbound.id}"
     ]
 

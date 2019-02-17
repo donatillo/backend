@@ -36,6 +36,26 @@ resource "aws_security_group" "allow_80" {
     }
 }
 
+resource "aws_security_group" "allow_443" {
+    name            = "allow_443"
+    description     = "Allow 443 inbound"
+
+    vpc_id          = "${data.aws_vpc.main.id}"
+    
+    ingress {
+        from_port   = 443
+        to_port     = 443
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+
+    tags {
+        Name        = "backend-allow_443"
+        Creator     = "backend"
+        Description = "Allow port 443 inbound"
+    }
+}
+
 resource "aws_security_group" "allow_outbound" {   # this is needed for the service to go to ECR
     name            = "allow_all_outbound"
     description     = "Allow all traffic outbound"
