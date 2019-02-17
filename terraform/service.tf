@@ -24,7 +24,10 @@ resource "aws_ecs_service" "backend" {
         container_port   = 443
     }
 
-    depends_on = [ "aws_lb_listener.backend-listener" ]
+    depends_on = [ 
+        "aws_lb_listener.backend-listener-443",
+        "aws_lb_listener.backend-listener-80"
+    ]
 
     tags {
         Name        = "backend-service"
