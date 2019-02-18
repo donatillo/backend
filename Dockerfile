@@ -11,7 +11,7 @@ WORKDIR /usr/src/app
 
 COPY backend .
 COPY etc/default.conf /etc/nginx/conf.d/
-#COPY etc/selfsigned.crt /etc/
+COPY etc/aws.crt /etc/
 #COPY etc/selfsigned.key /etc/
 #COPY etc/dhparam.pem /etc/
 
