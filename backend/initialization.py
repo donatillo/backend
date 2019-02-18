@@ -1,4 +1,5 @@
 import boto3
+import logging
 
 # initialize logging
 logging.basicConfig(
