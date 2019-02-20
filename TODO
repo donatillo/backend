@@ -1,27 +1,11 @@
-- Create service (ok)
-- Resource groups for devl/master (ok)
-- Add load balancer (ok)
-- DNS (ok)
-- Create API gateway
-  - create python repo (ok)
-  - improve python app (ok)
-  - create internal domain
-    - adjust env in YAML, api.tf (ok)
-  - create custom domain name (ok)
-  - use internal domain for container (ok)
-  - fix swagger file (ok)
-  - create client certificate to backend
-    - install uswgi (ok)
-    - install nginx (ok)
-    - configure https on nginx - self-signed (ok)
-    - add Cloudwatch logs (ok)
-    - integrate with Let's Encrypt (ok)
-    - configure client certificate on nginx
-    - automatically download client certificate from AWS
-  - publish documentation
-  - move API to private subnet, add NAT gateway (?)
-    - limit service calls between API Gateway and service
+- virtualenv python
+- create swagger from python (?)
+
+BACKLOG
+
+- configure client certificate on nginx
+- automatically download client certificate from AWS
 - Log EVERYTHING
 - Only redeploy when there are changes
 - Autoscaler (create alarm)
-- virtualenv python
+- publish documentation
