@@ -15,10 +15,9 @@
     - install nginx (ok)
     - configure https on nginx - self-signed (ok)
     - add Cloudwatch logs (ok)
-    - "devl" in task definition 
-    - create DynamoDB table
-    - integrate with Let's Encrypt
+    - integrate with Let's Encrypt (ok)
     - configure client certificate on nginx
+    - automatically download client certificate from AWS
   - publish documentation
   - move API to private subnet, add NAT gateway (?)
     - limit service calls between API Gateway and service
