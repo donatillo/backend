@@ -14,6 +14,8 @@ paths:
       responses:
         200:
           description: OK
+        400:
+          description: Error
       x-amazon-apigateway-integration:
         type: http
         httpMethod: GET
@@ -42,6 +44,8 @@ paths:
       responses:
         200:
           description: OK
+        400:
+          description: Error
       x-amazon-apigateway-integration:
         type: http
         httpMethod: GET
