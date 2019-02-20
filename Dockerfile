@@ -9,6 +9,9 @@ RUN apk --no-cache add nginx python3 \
 
 WORKDIR /usr/src/app
 
+EXPOSE 80
+EXPOSE 443
+
 COPY backend .
 COPY etc/default.conf /etc/nginx/conf.d/
 COPY etc/aws.crt /etc/
@@ -16,9 +19,6 @@ COPY etc/aws.crt /etc/
 #COPY etc/dhparam.pem /etc/
 
 CMD ./start.sh
-
-EXPOSE 80
-EXPOSE 443
 
 # TODO - install nginx
 # TODO - add https
