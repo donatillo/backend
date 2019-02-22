@@ -10,7 +10,6 @@ RUN apk --no-cache add nginx python3 \
 WORKDIR /usr/src/app
 
 EXPOSE 80
-EXPOSE 443
 
 COPY backend .
 COPY etc/default.conf /etc/nginx/conf.d/

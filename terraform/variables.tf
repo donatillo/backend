@@ -1,9 +1,10 @@
-variable "access_key" {}
-variable "secret_key" {}
-variable "env"        {}
-variable "domain"     {}
-variable "subdomain"  {}
-variable "basename"   {}
+variable "access_key"  {}
+variable "secret_key"  {}
+variable "env"         {}
+variable "main_domain" {}
+variable "domain"      {}
+variable "subdomain"   {}
+variable "basename"    {}
 
 provider "aws" {
     access_key      = "${var.access_key}"
