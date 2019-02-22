@@ -17,8 +17,7 @@ pipeline {
         stage('Plan infrastructure') {
             steps {
                 withCredentials([
-                        usernamePassword(credentialsId: 'aws', usernameVariable: 'USER', passwordVariable: 'PASS'),
-                        usernamePassword(credentialsId: 'dynamo', usernameVariable: 'DYN_USER', passwordVariable: 'DYN_PASS')
+                        usernamePassword(credentialsId: 'aws', usernameVariable: 'USER', passwordVariable: 'PASS')
                 ]) {
                     script {
                         sh """
