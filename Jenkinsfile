@@ -23,7 +23,7 @@ pipeline {
                         sh """
                             cd terraform 
                             terraform init -backend-config='access_key=$USER' -backend-config='secret_key=$PASS' -backend-config='bucket=${env.MY_APP}-terraform' -backend-config='key=backend-${BRANCH_NAME}.state'
-                            terraform plan -no-color -out=tfplan -var 'env=${env.BRANCH_NAME}' -var 'access_key=$USER' -var 'secret_key=$PASS' -var 'main_domain=${env.MY_MAIN_DOMAIN}' -var 'domain=${env.MY_DOMAIN}' -var 'basename=${env.BASENAME}' -var 'subdomain=${BRANCH_NAME == 'master' ? 'api' : 'api-' + BRANCH_NAME}' -var 'dynamo_access_id=$DYN_USER' -var 'dynamo_secret_key=$DYN_PASS'
+                            terraform plan -no-color -out=tfplan -var 'env=${env.BRANCH_NAME}' -var 'access_key=$USER' -var 'secret_key=$PASS' -var 'main_domain=${env.MY_MAIN_DOMAIN}' -var 'domain=${env.MY_DOMAIN}' -var 'basename=${env.BASENAME}' -var 'subdomain=${BRANCH_NAME == 'master' ? 'api' : 'api-' + BRANCH_NAME}'
                         """
                     }
                 }
