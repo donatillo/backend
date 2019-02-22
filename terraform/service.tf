@@ -15,7 +15,8 @@ resource "aws_ecs_service" "backend" {
             "${aws_security_group.allow_443.id}",
             "${aws_security_group.allow_outbound.id}"
         ]
-        assign_public_ip = true
+        #assign_public_ip = true
+        assign_public_ip = false
     }
 
     load_balancer {
