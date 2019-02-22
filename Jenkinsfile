@@ -26,11 +26,6 @@ pipeline {
                             terraform init -backend-config='access_key=$USER' -backend-config='secret_key=$PASS' -backend-config='bucket=${env.MY_APP}-terraform' -backend-config='key=backend-${BRANCH_NAME}.state'
                             terraform plan -no-color -out=tfplan -var 'env=${env.BRANCH_NAME}' -var 'access_key=$USER' -var 'secret_key=$PASS' -var 'main_domain=${env.MY_MAIN_DOMAIN}' -var 'domain=${env.MY_DOMAIN}' -var 'basename=${env.BASENAME}' -var 'subdomain=${BRANCH_NAME == 'master' ? 'api' : 'api-' + BRANCH_NAME}' -var 'dynamo_access_id=$DYN_USER' -var 'dynamo_secret_key=$DYN_PASS'
                         """
-                        if (env.BRANCH_NAME == "master") {
-                            timeout(time: 10, unit: 'MINUTES') {
-                                input(id: "Deploy Gate", message: "Deploy application?", ok: 'Deploy')
-                            }
-                        }
                     }
                 }
             }
@@ -38,8 +33,15 @@ pipeline {
 
         stage('Apply infrastrcuture') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'aws', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
-                    sh "cd terraform && terraform apply -no-color -lock=false -input=false tfplan"
+                script {
+                    if (env.BRANCH_NAME == "master") {
+                        timeout(time: 10, unit: 'MINUTES') {
+                            input(id: "Deploy Gate", message: "Deploy application?", ok: 'Deploy')
+                        }
+                    }
+                    withCredentials([usernamePassword(credentialsId: 'aws', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
+                        sh "cd terraform && terraform apply -no-color -lock=false -input=false tfplan"
+                    }
                 }
             }
         }

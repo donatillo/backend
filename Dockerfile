@@ -14,11 +14,5 @@ EXPOSE 443
 
 COPY backend .
 COPY etc/default.conf /etc/nginx/conf.d/
-COPY etc/aws.crt /etc/
-#COPY etc/selfsigned.key /etc/
-#COPY etc/dhparam.pem /etc/
 
 CMD ./start.sh
-
-# TODO - install nginx
-# TODO - add https
