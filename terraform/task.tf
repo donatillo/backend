@@ -2,7 +2,8 @@
 data "template_file" "task" {
     template    = "${file("task.json")}"
     vars {
-        env        = "${var.env}"
+        env      = "${var.env}"
+        basename = "${var.basename}"
     }
 }
 
