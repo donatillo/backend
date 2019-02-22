@@ -50,7 +50,7 @@ resource "aws_lb_listener" "backend-listener" {
     load_balancer_arn   = "${aws_lb.alb.arn}"
     port                = 80
     protocol            = "HTTP"
-    ssl_policy          = "ELBSecurityPolicy-2016-08"
+    # ssl_policy          = "ELBSecurityPolicy-2016-08"
 	# certificate_arn     = "${data.aws_acm_certificate.cert.arn}"
 
     default_action {
