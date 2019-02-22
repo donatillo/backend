@@ -4,7 +4,7 @@ data "template_file" "yaml" {
     vars {
         env     = "${var.env}"
         domain  = "privateapi-${var.env}.${var.domain}"
-		port    = 80
+		port    = 443
     }
 }
 
