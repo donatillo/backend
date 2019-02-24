@@ -1,9 +1,17 @@
 from flask import Flask, request
+from flask_cors import CORS, cross_origin
 from flask_restful import Resource, Api
 import socket
 
 app = Flask(__name__)
 api = Api(app)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
+@app.route('/tokensignin')
+@cross_origin()
+def signin():
+    return dict(request.headers)
 
 class HelloWorld(Resource):
     def get(self):
@@ -11,13 +19,6 @@ class HelloWorld(Resource):
         return dict(request.headers)
 
 api.add_resource(HelloWorld, '/')
-
-class SignIn(Resource):
-    def post(self):
-        #return { 'hello': 'world' }
-        return dict(request.headers)
-
-api.add_resource(SignIn, '/tokensignin')
 
 class Version(Resource):
     def get(self):
