@@ -12,6 +12,13 @@ class HelloWorld(Resource):
 
 api.add_resource(HelloWorld, '/')
 
+class SignIn(Resource):
+    def post(self):
+        #return { 'hello': 'world' }
+        return dict(request.headers)
+
+api.add_resource(SignIn, '/tokensignin')
+
 class Version(Resource):
     def get(self):
         #return { 'hello': 'world' }
