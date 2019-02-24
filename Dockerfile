@@ -12,6 +12,7 @@ WORKDIR /usr/src/app
 EXPOSE 80
 
 COPY backend .
+COPY etc/start.sh .
 COPY etc/default.conf /etc/nginx/conf.d/
 
 CMD ./start.sh
