@@ -32,7 +32,7 @@ func PostAuthenticate(w http.ResponseWriter, r *http.Request) {
     w.Header().Set("Content-Type", "application/json")   // TODO can we move this to a central location?
     user, err := interpretToken(t.Token, false);
     if err != nil {
-        http.Error(w, `{"message":"` + err.Error() + `"}`, http.StatusForbidden)
+        http.Error(w, `{"message":"` + err.Error() + `"}`, http.StatusUnauthorized)
         return
     }
     json.NewEncoder(w).Encode(user)
