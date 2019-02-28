@@ -3,7 +3,6 @@ package main
 import (
     "encoding/json"
     "github.com/futurenda/google-auth-id-token-verifier"
-    "github.com/gorilla/mux"
     "net/http"
     "time"
 )
@@ -18,11 +17,22 @@ type UserData struct {
 }
 
 func PostAuthenticate(w http.ResponseWriter, r *http.Request) {
-    params := mux.Vars(r)
-    w.Header().Set("Content-Type", "application/json")   // TODO can we move this to a central location?
-    user, err := interpretToken(params["token"], false);
+    // receive parameter
+    type Token struct {
+        Token string `json:"token"`
+    }
+    var t Token;
+    err := json.NewDecoder(r.Body).Decode(&t)
     if err != nil {
-        http.Error(w, err.Error(), http.StatusBadRequest)  // TODO - more detailed error
+        http.Error(w, `{"message":"` + err.Error() + `"}`, http.StatusBadRequest)
+        return
+    }
+
+    // send response
+    w.Header().Set("Content-Type", "application/json")   // TODO can we move this to a central location?
+    user, err := interpretToken(t.Token, false);
+    if err != nil {
+        http.Error(w, `{"message":"` + err.Error() + `"}`, http.StatusForbidden)
         return
     }
     json.NewEncoder(w).Encode(user)
