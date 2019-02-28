@@ -17,6 +17,8 @@ type UserData struct {
 }
 
 func PostAuthenticate(w http.ResponseWriter, r *http.Request) {
+    w.Header().Set("Content-Type", "application/json")   // TODO can we move this to a central location?
+
     // receive parameter
     type Token struct {
         Token string `json:"token"`
@@ -24,15 +26,14 @@ func PostAuthenticate(w http.ResponseWriter, r *http.Request) {
     var t Token;
     err := json.NewDecoder(r.Body).Decode(&t)
     if err != nil {
-        http.Error(w, `{"message":"` + err.Error() + `"}`, http.StatusBadRequest)
+        http.Error(w, err.Error(), http.StatusBadRequest)
         return
     }
 
     // send response
-    w.Header().Set("Content-Type", "application/json")   // TODO can we move this to a central location?
     user, err := interpretToken(t.Token, false);
     if err != nil {
-        http.Error(w, `{"message":"` + err.Error() + `"}`, http.StatusUnauthorized)
+        http.Error(w, err.Error(), http.StatusUnauthorized)
         return
     }
     json.NewEncoder(w).Encode(user)
