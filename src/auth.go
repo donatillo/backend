@@ -3,6 +3,7 @@ package main
 import (
     "encoding/json"
     "github.com/futurenda/google-auth-id-token-verifier"
+    "log"
     "net/http"
     "time"
 )
@@ -26,6 +27,7 @@ func PostAuthenticate(w http.ResponseWriter, r *http.Request) {
     var t Token;
     err := json.NewDecoder(r.Body).Decode(&t)
     if err != nil {
+        log.Print(err.Error());
         http.Error(w, err.Error(), http.StatusBadRequest)
         return
     }
@@ -33,6 +35,7 @@ func PostAuthenticate(w http.ResponseWriter, r *http.Request) {
     // send response
     user, err := interpretToken(t.Token, false);
     if err != nil {
+        log.Print(err.Error());
         http.Error(w, err.Error(), http.StatusUnauthorized)
         return
     }
